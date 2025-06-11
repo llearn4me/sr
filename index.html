@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>From Nibir</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    .first-page {
+      background-color: hsl(345, 100%, 60%);
+      color: rgba(255, 255, 255, 0.911);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+    }
+    .proposal-message {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    .heart {
+      font-size: 4rem;
+      margin-top: 20px;
+      animation: pulse-heart 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @keyframes pulse-heart {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .yes-button {
+      margin-top: 30px;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 77, 136, 0.5);
+    }
+    .yes-button:hover {
+      background-color: #ff1a66;
+      transform: scale(1.1);
+    }
+    .second-page {
+      background-color: #c12d75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .card {
+      display: flex;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      max-width: 800px;
+      width: 100%;
+      cursor: pointer;
+      transform: scale(1);
+      opacity: 1;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .card.open {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    .card img {
+      width: 50%;
+      object-fit: cover;
+      border-radius: 20px 0 0 20px;
+    }
+    .love-note {
+      padding: 20px;
+      font-size: 1.5rem;
+      color: #ff3366;
+      text-align: center;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    video {
+      margin-top: 20px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+      }
+      .card img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="first-page" id="firstPage">
+    <div class="proposal-message">Will you be mine forever? ❤️</div>
+    <div class="heart">❤️</div>
+    <button class="yes-button" onclick="goToSecondPage()">Yes, of course!</button>
+  </div>
+
+  <div class="second-page" id="secondPage" style="display: none;">
+    <div class="card" id="card" onclick="openCard()">
+      <img src="image.jpg" alt="Couple">
+    <div class="love-note" style="max-height: 40vh; overflow-y: auto; padding: 16px; background: #fff0f5; border-radius: 10px; font-size: 1.1rem; line-height: 1.7; word-break: break-word; box-sizing: border-box; width: 100%;">
+        আমাকে ভালবাসতে হবে না, ভালবাসি বলতে হবে না...<br>
+        আমাকে ভালবাসতে হবে না, ভালবাসি বলতে হবে না। মাঝে মাঝে গভীর আবেগ নিয়ে আমার ঠোঁট দুটো ছুয়ে দিতে হবে না। কিংবা আমার জন্য রাত জাগা পাখিও হতে হবে না।<br><br>
+        অন্য সবার মত আমার সাথে রুটিন মেনে দেখা করতে হবে না। কিংবা বিকেল বেলায় ফুচকাও খেতে হবে না। এত অসীম সংখ্যক "না" এর ভিড়ে শুধু মাত্র একটা কাজ করতে হবে:<br><br>
+        আমি যখন প্রতিদিন এক বার "ভালবাসি" বলব, তুমি প্রতিবার একটা দীর্ঘশ্বাস ফেলে একটু খানি আদর মাখা গলায় বলবে <strong>"আমার পাগল নিবির" 💘</strong>
+    </div>    </div>
+    </div>
+    <div style="margin-top: 30px; width: 100%; display: flex; justify-content: center;">
+      <audio controls style="width: 90%; max-width: 500px;">
+        <source src="videoplayback (6).webm" type="audio/webm">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    
+
+  <script>
+    function goToSecondPage() {
+      document.getElementById('firstPage').style.display = 'none';
+      document.getElementById('secondPage').style.display = 'flex';
+    }
+
+    function openCard() {
+      document.getElementById('card').classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
